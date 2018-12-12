@@ -1,41 +1,48 @@
 <?php
 /* Template Name: Torck - Estoque */
 get_header();
+$templateDIR = get_bloginfo('template_directory');
+
+// simple fields
+$urlBannerPagina = simple_fields_value("banner_da_pagina_url");
+$urlBannerPagina = ($urlBannerPagina != "") ? $urlBannerPagina: "$templateDIR/images/banner-estoque.jpg";
+$tituloPag       = simple_fields_value("conteudo_pagina_titulo");
+$textoPag        = simple_fields_value("conteudo_pagina_texto");
+
+// imagens
+$imagensEstoque  = simple_fields_values("fotos_estoque_url_imagem");
 ?>
 
 <div id="banner_header" class="clearfix mb-45">
-  <img alt="Banner - Torck" src="<?php bloginfo('template_directory'); ?>/images/banner-estoque.jpg" />
+  <img alt="Banner - Torck" src="<?php echo $urlBannerPagina; ?>" />
 </div>
 <div class="clearfix mb-45 inner-wrap">
   <div class="row">
     <div class="col-12">
-      <h2 class="page_title">Garantia e agilidade na entrega</h2>
-
-      <p>Hoje a Torck conta com um centro de armazenagem e distribuição de mais xxxm2 e envia seus produtos para todo o Brasil, além de ter um estoque com armazenamento adequado dos tecidos e processos automatizados que agilizam a entrega dos produtos.</p>
+      <h2 class="page_title"><?php echo $tituloPag; ?></h2>
+      <?php echo nl2br($textoPag); ?>
     </div>
   </div>
 </div>
-<div class="clearfix mb-45 inner-wrap">
-  <div class="row">
-    <div class="col-6">
-      <img src="<?php bloginfo('template_directory'); ?>/images/estoque-img-1.jpg" alt="Estoque - Torck" />
-    </div>
-    <div class="col-6">
-      <img src="<?php bloginfo('template_directory'); ?>/images/estoque-img-2.jpg" alt="Estoque - Torck" />
-    </div>
-  </div>
-</div>
-<div class="clearfix mb-45 inner-wrap">
-  <div class="row">
-    <div class="col-6">
-      <img src="<?php bloginfo('template_directory'); ?>/images/estoque-img-3.jpg" alt="Estoque - Torck" />
-    </div>
-    <div class="col-6">
-      <img src="<?php bloginfo('template_directory'); ?>/images/estoque-img-4.jpg" alt="Estoque - Torck" />
-    </div>
-  </div>
-</div>
-
 <?php
+if(count($imagensEstoque) > 0){
+  ?>
+  <div class="clearfix mb-45 inner-wrap">
+    <div class="row">
+      <?php
+      for($i=0; $i<count($imagensEstoque); $i++){
+        $urlImg = ($imagensEstoque[$i] != "") ? $imagensEstoque[$i]: "$templateDIR/images/estoque-img-1.jpg";
+        ?>
+        <div class="col-6">
+          <img src="<?php echo $urlImg; ?>" alt="Estoque <?php echo $i; ?> - Torck" />
+        </div>
+        <?php
+      }
+      ?>
+    </div>
+  </div>
+  <?php
+}
+
 get_footer();
 ?>

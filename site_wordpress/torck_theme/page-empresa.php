@@ -4,7 +4,7 @@ get_header();
 $templateDIR = get_bloginfo('template_directory');
 
 // simple fields
-$urlBannerPagina      = simple_fields_value("banner_da_pagina");
+$urlBannerPagina      = simple_fields_value("banner_da_pagina_url");
 $missaoTexto          = simple_fields_value("mar_missao_texto");
 $missaoUrlImagem      = simple_fields_value("mar_missao_url_imagem");
 $areaAtuacaoTexto     = simple_fields_value("mar_area_atuacao_texto");
