@@ -38,10 +38,10 @@ a:hover{
   text-decoration: underline;
 }
 .mb-45{
-  margin-bottom: 45px;
+  margin-bottom: 45px !important;
 }
 .mb-15{
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
 }
 header{
   padding: 20px 0;

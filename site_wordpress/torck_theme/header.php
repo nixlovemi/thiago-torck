@@ -17,9 +17,10 @@
       <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <?php endif; ?>
 
-    <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/jquery.js"></script>
     <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery/slippry/dist/slippry.min.js"></script>
+    <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery/jquery-confirm/dist/jquery-confirm.min.js"></script>
     <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/main.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
@@ -27,6 +28,7 @@
     <link type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/simple-grid.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/jquery/tooltipster/dist/css/tooltipster.bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/jquery/slippry/dist/slippry.css" />
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/jquery/jquery-confirm/dist/jquery-confirm.min.css" />
     <link type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" />
     <?php wp_head(); ?>
   </head>
