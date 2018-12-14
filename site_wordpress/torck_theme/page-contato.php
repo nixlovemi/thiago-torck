@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </script>
       <?php
     } else {
-      $html  = "Contato do site, com os dados:";
+      $html  = "Contato do site, com os dados:<br /><br />";
       $html .= "--Nome: $vNome<br />";
       $html .= "--Telefone: $vTelefone<br />";
       $html .= "--Email: $vEmail<br />";

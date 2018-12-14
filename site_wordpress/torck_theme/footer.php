@@ -2,23 +2,86 @@
         <div class="row">
           <div id="social-home" class="col-12">
             <center>
+              <?php
+              $idPageHome      = 7;
+              $urlInstagram    = simple_fields_value("contato_social_url_instagram", $idPageHome);
+              $urlWhatsapp     = simple_fields_value("contato_social_url_whatsapp", $idPageHome);
+
+              $emailNovidades  = simple_fields_value("contato_social_email_novidades", $idPageHome);
+              $emailNovidades  = ($emailNovidades != "") ? $emailNovidades: "leandro.parra.85@gmail.com";
+
+              // form newsletter
+              $vEmail = "";
+              // ===============
+
+              if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $hddnAcao = $_POST["hddnAcao"];
+                if($hddnAcao == "post-newsletter"){
+                  $vEmail = $_POST["email-newsletter"];
+
+                  $msgErro = "";
+                  if(!filter_var($vEmail, FILTER_VALIDATE_EMAIL)){
+                    $msgErro .= "* Informe um email válido<br />";
+                  }
+
+                  if($msgErro != ""){
+                    $msgErro = "Verifique os campos antes de cadastrar na newsletter:<br /><br />$msgErro";
+                    ?>
+                    <script>
+                    jQuery( document ).ready(function() {
+                        jQuery.alert('<?php echo $msgErro; ?>', 'Erro ao enviar newsletter!');
+                    });
+                    </script>
+                    <?php
+                  } else {
+                    $html  = "Cadastro de newsletter, com os dados:<br /><br />";
+                    $html .= "--Email: $vEmail<br />";;
+
+                    $ret = sendMail($emailNovidades, "CADASTRO NEWSLETTER - TORCK", $html);
+                    $msg = ($ret === true) ? "Cadastro enviado com sucesso": "Erro ao enviar cadastro. Tente novamente mais tarde.";
+                    ?>
+                    <script>
+                    jQuery( document ).ready(function() {
+                        jQuery.alert('<?php echo $msg; ?>', 'Contato!');
+                    });
+                    </script>
+                    <?php
+                    $vEmail    = "";
+                  }
+                }
+              }
+              ?>
               <table border="0" align="center">
                 <tr>
-                  <td>
-                    <a href="javascript:;">
-                      <img src="<?php bloginfo('template_directory'); ?>/images/instag-home.png" alt="Instagram - Torck" />
-                    </a>
-                  </td>
-                  <td>
-                    <a href="javascript:;">
-                      <img src="<?php bloginfo('template_directory'); ?>/images/whats-home.png" alt="Instagram - Torck" />
-                    </a>
-                  </td>
+                  <?php
+                  if($urlInstagram != ""){
+                    ?>
+                    <td>
+                      <a href="<?php echo $urlInstagram; ?>">
+                        <img src="<?php bloginfo('template_directory'); ?>/images/instag-home.png" alt="Instagram - Torck" />
+                      </a>
+                    </td>
+                    <?php
+                  }
+
+                  if($urlWhatsapp != ""){
+                    ?>
+                    <td>
+                      <a href="<?php echo $urlWhatsapp; ?>">
+                        <img src="<?php bloginfo('template_directory'); ?>/images/whats-home.png" alt="Instagram - Torck" />
+                      </a>
+                    </td>
+                    <?php
+                  }
+                  ?>
                   <td>
                     <div style="position:relative; top:14px;">
-                      <input type="text" class="inpt-newsletter-home" />
-                      <br />
-                      <small>CADASTRE-SE E FIQUE POR DENTRO DAS NOVIDADES</small>
+                      <form method="post" action="./">
+                        <input type="hidden" name="hddnAcao" value="post-newsletter" />
+                        <input type="text" class="inpt-newsletter-home" name="email-newsletter" />
+                        <br />
+                        <small>CADASTRE-SE E FIQUE POR DENTRO DAS NOVIDADES</small>
+                      </form>
                     </div>
                   </td>
                 </tr>
