@@ -99,7 +99,7 @@ for($i=0; $i<count($pdg_nome_produto); $i++){
           <img src="<?php echo $vUrlImg; ?>" alt="<?php echo $vNome; ?> - Torck" />
           <h3 class="title"><?php echo $vNome; ?></h3>
           <?php echo $vTexto; ?>
-          <p><a href="<?php echo $vUrlImg; ?>">CONHEÇA</a></p>
+          <p><a href="<?php echo $vLink; ?>">CONHEÇA</a></p>
         </div>
         <?php
       }
