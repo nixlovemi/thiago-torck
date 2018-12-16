@@ -9,6 +9,7 @@ $simbolosTecido = simple_fields_values("simbolos_tecido_url_imagem");
 $cpcTitulo      = simple_fields_values("conteudo_pagina_cuidados_titulo");
 $cpcDescricao   = simple_fields_values("conteudo_pagina_cuidados_descricao");
 $cpcUrlImagem   = simple_fields_values("conteudo_pagina_cuidados_url_imagem");
+$cpcUrlBanner   = simple_fields_values("conteudo_pagina_cuidados_banner");
 
 // default
 $bannerPagina = ($bannerPagina != "") ? $bannerPagina: "$templateDIR/images/banner-cuidados.jpg";
@@ -19,11 +20,13 @@ for($i=0; $i<count($cpcTitulo); $i++){
   $titulo    = $cpcTitulo[$i];
   $descricao = $cpcDescricao[$i];
   $urlImagem = $cpcUrlImagem[$i];
+  $urlBanner = $cpcUrlBanner[$i];
 
   $arrTextosCuidados[] = array(
     "titulo"    => $titulo,
     "descricao" => $descricao,
     "urlImagem" => $urlImagem,
+    "urlBanner" => $urlBanner,
   );
 }
 ?>
@@ -63,33 +66,40 @@ if ( have_posts() ) {
           ?>
         </div>
         <br /><br />
-        <?php
-        foreach($arrTextosCuidados as $texto){
-          $temImagem = $texto["urlImagem"] != "";
-          $classDiv  = ($temImagem) ? "col-8": "col-12";
-          ?>
-          <div class="clearfix mb-45">
-            <div class="<?php echo $classDiv; ?>">
-              <h2 class="title"><?php echo $texto["titulo"]; ?></h2>
-              <?php echo $texto["descricao"]; ?>
-            </div>
-            <?php
-            if($temImagem){
-              ?>
-              <div class="col-4">
-                <img src="<?php echo $texto["urlImagem"]; ?>" alt="Cuidados para seu produto - Torck" />
-              </div>
-              <?php
-            }
-          ?>
-          </div>
-          <br /><br />
-          <?php
-        }
-        ?>
       </div>
     </div>
     <?php
+    foreach($arrTextosCuidados as $texto){
+      $temImagem = $texto["urlImagem"] != "";
+      $classDiv  = ($temImagem) ? "col-8": "col-12";
+
+      if($texto["urlBanner"] != ""){
+        ?>
+        <div id="banner_header" class="clearfix mb-45">
+          <img alt="Banner - Torck" src="<?php echo $texto["urlBanner"]; ?>" />
+        </div>
+        <?php
+      }
+      ?>
+      <div class="clearfix mb-45 inner-wrap">
+        <div class="row cuidados-produto">
+          <div class="<?php echo $classDiv; ?>">
+            <h2 class="title"><?php echo $texto["titulo"]; ?></h2>
+            <?php echo $texto["descricao"]; ?>
+          </div>
+          <?php
+          if($temImagem){
+            ?>
+            <div class="col-4">
+              <img src="<?php echo $texto["urlImagem"]; ?>" alt="Cuidados para seu produto - Torck" />
+            </div>
+            <?php
+          }
+          ?>
+        </div>
+      </div>
+      <?php
+    }
   } // end while
 } // end if
 

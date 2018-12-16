@@ -32,8 +32,20 @@ get_header();
             <h2 class="title mb-45"><?php echo $familiaProd; ?></h2>
             <ul class="produtos-itens">
               <?php
-              $arrLoop = (isset($arrFamilia[$familiaProd]["itens"])) ? $arrFamilia[$familiaProd]["itens"]: array();
+              $arrLoop      = (isset($arrFamilia[$familiaProd]["itens"])) ? $arrFamilia[$familiaProd]["itens"]: array();
+              $arrLoopOrder = array();
               foreach($arrLoop as $item){
+                $link = $item["link"];
+                $nome = $item["produto"];
+
+                $arrLoopOrder[$nome.$link] = array(
+                  "link"    => $link,
+                  "produto" => $nome,
+                );
+              }
+
+              ksort($arrLoopOrder);
+              foreach($arrLoopOrder as $key => $item){
                 $link = $item["link"];
                 $nome = $item["produto"];
                 ?>
@@ -92,7 +104,7 @@ get_header();
                     ?>
                     <li>
                        <a href="#slide<?php echo $i; ?>">
-                         <img data-codigo-produto="<?php echo $produtoImg["codigo"]; ?>" src="<?php echo $produtoImg["urlImagem"]; ?>" alt="C&oacute;digo: <?php echo $produtoImg["codigo"]; ?>" />
+                         <img data-codigo-produto="<?php echo $produtoImg["codigo"]; ?>" src="<?php echo $produtoImg["urlImagem"]; ?>" alt="" />
                        </a>
                     </li>
                     <?php
@@ -100,6 +112,7 @@ get_header();
                   }
                   ?>
                 </ul>
+                <p id="linha-codigo-produto">Código 001 - Areia</p>
                 <?php
               }
               ?>
@@ -111,7 +124,7 @@ get_header();
                     ?>
                     <li>
                       <a href="#<?php echo $i; ?>" data-slide="<?php echo $i; ?>">
-                        <img data-codigo-produto="<?php echo $produtoImg["codigo"]; ?>" src="<?php echo $produtoImg["urlImagem"]; ?>" alt="C&oacute;digo: <?php echo $produtoImg["codigo"]; ?>" />
+                        <img data-codigo-produto="<?php echo $produtoImg["codigo"]; ?>" src="<?php echo $produtoImg["urlImagem"]; ?>" alt="" />
                       </a>
                     </li>
                     <?php
@@ -136,5 +149,7 @@ get_header();
 </div>
 
 <?php
+global $deixaSoWhats;
+$deixaSoWhats = true;
 get_footer();
 ?>

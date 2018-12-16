@@ -43,14 +43,13 @@ foreach($arrProdDestGde as $itemPDP){
   $vUrlImg = ($itemPDP["urlImg"] != "") ? $itemPDP["urlImg"]: "$templateDIR/images/produtos-page-1.jpg";
 
   $ehPar = $i % 2 == 0;
-  if($ehPar){
+  if(!$ehPar){
     ?>
     <div class="clearfix row produtos-lines">
       <div class="col-6 produtos-lines-<?php echo $i; ?>">
         <div class="inner-text">
           <h2 class="title"><?php echo $vNome; ?></h2>
           <?php echo nl2br($vTexto); ?>
-          <br />
           <a href="<?php echo $vLink; ?>">VER LINHA</a>
         </div>
       </div>
@@ -66,10 +65,9 @@ foreach($arrProdDestGde as $itemPDP){
         <img src="<?php echo $vUrlImg; ?>" alt="<?php echo $vNome; ?> - Torck" />
       </div>
       <div class="col-6 produtos-lines-<?php echo $i; ?>">
-        <div class="inner-text">
+        <div class="inner-text inner-text-linha-2">
           <h2 class="title"><?php echo $vNome; ?></h2>
           <?php echo nl2br($vTexto); ?>
-          <br />
           <a href="<?php echo $vLink; ?>">VER LINHA</a>
         </div>
       </div>

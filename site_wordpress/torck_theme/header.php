@@ -36,7 +36,7 @@
     <div id="page">
       <header class="clearfix">
         <div class="inner-wrap clearfix">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img class="logo" src="<?php bloginfo('template_url'); ?>/images/logo.png" alt="Logotipo Torck" /></a>
+          <a id="logo-header" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img class="logo" src="<?php bloginfo('template_url'); ?>/images/logo.png" alt="Logotipo Torck" /></a>
 
           <ul id="menu_header">
             <li>
@@ -53,7 +53,21 @@
               </div>
             </li>
             <li>
-              <a href="<?php echo esc_url( home_url( '' ) ); ?>/produtos">produtos</a>
+              <a href="<?php echo esc_url( home_url( '' ) ); ?>/produtos" class="tooltipster-item" data-tooltip-content="#tooltip_produtos">produtos</a>
+              <div class="tooltip_templates">
+                <span id="tooltip_produtos">
+                  <?php
+                  $arrFamilia  = getAllFamilia();
+                  foreach($arrFamilia as $familia => $itens){
+                    echo "<strong>$familia</strong><br />";
+                    foreach($itens["itens"] as $item){
+                      echo "&nbsp;&nbsp;&nbsp;<a href='".$item["link"]."'>".$item["produto"]."</a><br />";
+                    }
+                    echo "<br /><br />";
+                  }
+                  ?>
+                </span>
+              </div>
             </li>
             <li>
               <a href="<?php echo esc_url( home_url( '' ) ); ?>/cuidados-com-seu-produto/">cuidados com seu produto</a>

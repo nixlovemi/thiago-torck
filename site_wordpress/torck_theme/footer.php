@@ -7,6 +7,14 @@
               $urlInstagram    = simple_fields_value("contato_social_url_instagram", $idPageHome);
               $urlWhatsapp     = simple_fields_value("contato_social_url_whatsapp", $idPageHome);
 
+              $arrFooterInfo = [];
+              for($i=1; $i<=6; $i++){
+                $footerInfo = simple_fields_value("informacao_footer_coluna_$i", $idPageHome);
+                if($footerInfo != ""){
+                  $arrFooterInfo[] = $footerInfo;
+                }
+              }
+
               $emailNovidades  = simple_fields_value("contato_social_email_novidades", $idPageHome);
               $emailNovidades  = ($emailNovidades != "") ? $emailNovidades: "leandro.parra.85@gmail.com";
 
@@ -54,7 +62,10 @@
               <table border="0" align="center">
                 <tr>
                   <?php
-                  if($urlInstagram != ""){
+                  global $deixaSoWhats;
+                  $deixaSoWhats = isset($deixaSoWhats) ? $deixaSoWhats: false;
+
+                  if($urlInstagram != "" && $deixaSoWhats == false){
                     ?>
                     <td>
                       <a href="<?php echo $urlInstagram; ?>">
@@ -73,17 +84,23 @@
                     </td>
                     <?php
                   }
+
+                  if($deixaSoWhats == false){
+                    ?>
+                    <td>
+                      <div style="position:relative; top:14px;">
+                        <form id="frm-newsletter" method="post" action="./">
+                          <input type="hidden" name="hddnAcao" value="post-newsletter" />
+                          <input type="text" class="inpt-newsletter-home" name="email-newsletter" />
+                          <a href="javascript:;" onclick="document.getElementById('frm-newsletter').submit();">OK</a>
+                          <br />
+                          <small>CADASTRE-SE E FIQUE POR DENTRO DAS NOVIDADES</small>
+                        </form>
+                      </div>
+                    </td>
+                    <?php
+                  }
                   ?>
-                  <td>
-                    <div style="position:relative; top:14px;">
-                      <form method="post" action="./">
-                        <input type="hidden" name="hddnAcao" value="post-newsletter" />
-                        <input type="text" class="inpt-newsletter-home" name="email-newsletter" />
-                        <br />
-                        <small>CADASTRE-SE E FIQUE POR DENTRO DAS NOVIDADES</small>
-                      </form>
-                    </div>
-                  </td>
                 </tr>
               </table>
             </center>
@@ -93,50 +110,25 @@
       <footer class="clearfix">
         <div class="inner-wrap clearfix">
           <div class="row">
-            <div class="col-2">
-              <img class="logo" src="<?php bloginfo('template_directory'); ?>/images/logo-footer.png" alt="Logotipo Torck" />
-            </div>
-            <div class="col-2 text-footer">
-              Rua São Gabriel, 1.555
-              <br />
-              Sala 404 e 405, 4º andar
-              <br />
-              CEP: 13473-000 Vila Belvedere
-              <br />
-              Ed. Americana Office Tower
-              <br />
-              Americana – SP
-            </div>
-            <div class="col-2 text-footer">
-              +55 19  3621 7677
-              <br />
-              torck@torck.com.br
-            </div>
-            <div class="col-2 text-footer">
-              Institucional
-              <br /><br />
-              <a href="javascript:;">Sobre nós</a>
-              <br />
-              <a href="javascript:;">Estoque</a>
-              <br />
-              <a href="javascript:;">Contato</a>
-            </div>
-            <div class="col-2 text-footer">
-              Produtos
-              <br /><br />
-              <a href="javascript:;">Linho</a>
-              <br />
-              <a href="javascript:;">Veludos</a>
-              <br />
-              <a href="javascript:;">Veludos Estampados</a>
-              <br />
-              <a href="javascript:;">Sarja</a>
-              <br />
-              <a href="javascript:;">Torckouro</a>
-            </div>
-            <div class="col-2 text-footer">
-              © All rights reserved to Torck do Brasil
-            </div>
+            <?php
+            $i = 1;
+            foreach($arrFooterInfo as $info){
+              $classCol = "col-2";
+              if($i == 1 || $i == 2){
+                $classCol = "col-3";
+              } elseif($i == 4 || $i == 5){
+                $classCol = "col-1";
+              }
+              ?>
+              <div class="<?php echo $classCol; ?> text-footer footer-<?php echo $i; ?>">
+                <?php
+                echo $info;
+                ?>
+              </div>
+              <?php
+              $i++;
+            }
+            ?>
           </div>
         </div>
       </footer>

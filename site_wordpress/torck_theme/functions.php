@@ -33,5 +33,6 @@ function getAllFamilia(){
     );
   }
 
+  wp_reset_postdata();
   return $arrFamilia;
 }

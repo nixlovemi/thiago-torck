@@ -13,7 +13,7 @@ html{
   font-size: 14px;
 }
 strong{
-  font-weight: bolder;
+  font-weight: bold;
 }
 #page {
   max-width: 100%;
@@ -66,7 +66,7 @@ header #menu_header li a{
   color: inherit;
 }
 .product-mini-home .title, .product-full-home .title, .contact-footer-title, .cuidados-produto .title{
-  font-weight: bolder;
+  font-weight: bold;
 }
 .product-mini-home .title, .product-mini-home p, .product-full-home .title, .product-full-home p{
   font-size: 14px;
@@ -90,14 +90,20 @@ header #menu_header li a{
   border: none;
   border-color: #dedddd;
   padding: 10px 8px;
-  width: 100%;
+  width: 89%;
   font-size: 13px;
 }
 .inpt-busca{
   width: 40%;
 }
-#social-home small, footer .text-footer{
+#social-home small{
   font-size: 12px;
+}
+footer .text-footer, footer .text-footer p{
+  font-size: 10px;
+}
+footer .text-footer p{
+  text-align: center;
 }
 #social-home th, #social-home td {
   padding: 0 15px 15px 15px;
@@ -125,7 +131,7 @@ footer{
 }
 .empresa-missao .title, .page_title{
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: bold;
   margin-bottom: 30px;
 }
 .empresa-missao .title_line{
@@ -201,7 +207,7 @@ footer{
   color: #554e4e;
 }
 .produtos-lines-1 a, .produtos-lines-2 a, .produtos-lines-3 a{
-  font-weight: bolder;
+  font-weight: bold;
 }
 .produtos-lines-2, .produtos-lines-3{
   background-color: #e9e5e6;
@@ -213,12 +219,15 @@ footer{
   background-color: #d9bfa4;
 }
 .produtos-lines .title, .produtos-inner title{
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 20px;
   margin-bottom: 11px;
 }
 .produtos-lines .inner-text{
-  padding: 5% 0 5% 25%;
+  padding: 6.5% 5% 5% 32%;
+}
+.produtos-lines .inner-text-linha-2{
+  padding: 6.5% 18% 5% 18%;
 }
 .busca-single{
   background-color: #cccccc;
@@ -244,6 +253,8 @@ footer{
 }
 .produtos-itens li a{
   color: #554e4e;
+  font-weight: bold;
+  font-size: 16px;
 }
 .thumb-box {
   padding: 1.4em 0 1em;
@@ -275,6 +286,21 @@ footer{
   overflow: hidden;
   margin-bottom:30px;
 }
+#tooltip_produtos, #tooltip_produtos p {
+  font-size: 12px;
+}
+.imagem-estoque{
+  margin: 2% !important;
+}
+.produtos-lines .inner-text p{
+  font-size: 13px;
+}
+.sy-controls li a:after {
+  background-image: url("jquery/slippry/images/arrows.svg");
+}
+.thumb-box li {
+  padding: 1% !important;
+}
 @media screen and (max-width: 900px) {
   .produtos-lines [class^=col]{
     display: block;
@@ -286,5 +312,25 @@ footer{
   }
   .produtos-lines .inner-text{
     padding: 5% 0 5% 10%;
+  }
+}
+@media screen and (max-width: 810px) {
+  #logo-header{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #logo-header img{
+    float: none;
+  }
+  #menu_header{
+    float: none !important;
+    text-align: center;
+  }
+  #menu_header li{
+    margin-left: 10px;
+    margin-bottom: 25px;
   }
 }

@@ -33,7 +33,7 @@ if(count($imagensEstoque) > 0){
       for($i=0; $i<count($imagensEstoque); $i++){
         $urlImg = ($imagensEstoque[$i] != "") ? $imagensEstoque[$i]: "$templateDIR/images/estoque-img-1.jpg";
         ?>
-        <div class="col-6">
+        <div class="col-6 imagem-estoque">
           <img src="<?php echo $urlImg; ?>" alt="Estoque <?php echo $i; ?> - Torck" />
         </div>
         <?php
