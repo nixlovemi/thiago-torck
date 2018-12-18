@@ -4,6 +4,11 @@ $(function(){
   	interactive: true
   });
 
+  jQuery('.banner-rotativo').slippry({
+    captions: false,
+    pager: false,
+  });
+
   var thumbs = jQuery('#thumbnails').slippry({
     // general elements & wrapper
     slippryWrapper: '<div class="slippry_box thumbnails" />',

@@ -4,8 +4,12 @@ get_header();
 $templateDIR = get_bloginfo('template_directory');
 
 // simple fields
-$urlBannerPagina = simple_fields_value("banner_da_pagina_url");
-$urlBannerPagina = ($urlBannerPagina != "") ? $urlBannerPagina: "$templateDIR/images/banner-header.jpg";
+$urlBannerRotativo = simple_fields_values("banner_rotativo_url_imagem");
+$arrBannerRotativo = [];
+for($i=0; $i<count($urlBannerRotativo); $i++){
+  $arrBannerRotativo[] = $urlBannerRotativo[$i];
+}
+#$urlBannerPagina = ($urlBannerPagina != "") ? $urlBannerPagina: "$templateDIR/images/banner-header.jpg";
 
 // prod dest peq
 $pdp_nome_produto  = simple_fields_values("produtos_destaque_peq_nome_produto");
@@ -51,9 +55,30 @@ for($i=0; $i<count($pdg_nome_produto); $i++){
 }
 // =============
 ?>
-<div id="banner_header" class="clearfix mb-45">
-  <img alt="Banner - Torck" src="<?php echo $urlBannerPagina; ?>" />
-</div>
+
+<?php
+if(count($arrBannerRotativo) > 0){
+  ?>
+  <div id="banner_header" class="clearfix mb-45">
+    <ul class="banner-rotativo">
+      <?php
+      $i = 1;
+      foreach($arrBannerRotativo as $urlBanner){
+        ?>
+        <li>
+          <a href="#slide<?php echo $i; ?>">
+            <img src="<?php echo $urlBanner; ?>" alt="Banner Torck <?php echo $i; ?>" />
+          </a>
+        </li>
+        <?php
+        $i++;
+      }
+      ?>
+    </ul>
+  </div>
+  <?php
+}
+?>
 <div class="clearfix mb-45 inner-wrap">
   <?php
   if(count($arrProdDestPeq) > 0){
