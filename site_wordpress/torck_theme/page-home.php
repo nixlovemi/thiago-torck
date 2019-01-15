@@ -5,9 +5,13 @@ $templateDIR = get_bloginfo('template_directory');
 
 // simple fields
 $urlBannerRotativo = simple_fields_values("banner_rotativo_url_imagem");
+$urlClickBannerRot = simple_fields_values("banner_rotativo_url_click");
 $arrBannerRotativo = [];
 for($i=0; $i<count($urlBannerRotativo); $i++){
-  $arrBannerRotativo[] = $urlBannerRotativo[$i];
+  $arrBannerRotativo[] = array(
+    "urlImagem" => $urlBannerRotativo[$i],
+    "urlClick"  => ($urlClickBannerRot[$i] != "") ? $urlClickBannerRot[$i]: "javascript:;",
+  );
 }
 #$urlBannerPagina = ($urlBannerPagina != "") ? $urlBannerPagina: "$templateDIR/images/banner-header.jpg";
 
@@ -66,8 +70,9 @@ if(count($arrBannerRotativo) > 0){
       foreach($arrBannerRotativo as $urlBanner){
         ?>
         <li>
-          <a href="#slide<?php echo $i; ?>">
-            <img src="<?php echo $urlBanner; ?>" alt="Banner Torck <?php echo $i; ?>" />
+          <!--<a href="#slide<?php echo $i; ?>">-->
+          <a href="<?php echo $urlBanner["urlClick"]; ?>">
+            <img src="<?php echo $urlBanner["urlImagem"]; ?>" alt="Banner Torck <?php echo $i; ?>" />
           </a>
         </li>
         <?php
