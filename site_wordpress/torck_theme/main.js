@@ -1,7 +1,8 @@
 $(function(){
   $(".tooltipster-item").tooltipster({
   	contentAsHTML: true,
-  	interactive: true
+  	interactive: true,
+    /*delay: 15000,*/
   });
 
   jQuery('.banner-rotativo').slippry({

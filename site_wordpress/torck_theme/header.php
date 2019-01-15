@@ -17,6 +17,8 @@
       <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <?php endif; ?>
 
+    <link rel="shortcut icon" type="image/png" href="<?php bloginfo('template_url'); ?>/images/favicon.ico" />
+
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/jquery.js"></script>
     <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" defer src="<?php bloginfo('template_url'); ?>/jquery/slippry/dist/slippry.min.js"></script>

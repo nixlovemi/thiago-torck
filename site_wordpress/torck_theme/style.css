@@ -117,16 +117,21 @@ footer{
 .tooltip_templates {
   display: none;
 }
+.tooltipster-default {
+  border-color: #2d1f1e;
+}
 .tooltipster-base {
-
+  border-color: #2d1f1e;
 }
 .tooltipster-box {
-
+  border-color: #2d1f1e !important;
 }
 .tooltipster-content {
+  border-color: #2d1f1e;
   background-color: #2d1f1e;
 }
 .tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-background {
+  border-color: #2d1f1e;
   border-bottom-color: #2d1f1e;
 }
 .empresa-missao .title, .page_title{
@@ -148,7 +153,7 @@ footer{
 .contact-footer-img{
   float: left;
   margin-right: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 78px;
 }
 .contact-footer-title{
   margin-bottom: 10px;

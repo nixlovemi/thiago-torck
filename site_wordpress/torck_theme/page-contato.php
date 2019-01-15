@@ -147,9 +147,13 @@ if ( have_posts() ) {
         <div class="col-3">
           <img class="contact-footer-img" src="<?php bloginfo('template_directory'); ?>/images/contato-img2.png" alt="Contato - Torck" />
           <h3 class="contact-footer-title">HORÁRIO DE ATENDIMENTO</h3>
-          De segunda à sexta-feira,
+          De segunda à quinta-feira,
           <br />
           das 08h00 às 18h00
+          <br /><br />
+          De sexta-feira,
+          <br />
+          das 08h00 às 17h00
         </div>
         <div class="col-3">
           <img class="contact-footer-img" src="<?php bloginfo('template_directory'); ?>/images/contato-img3.png" alt="Contato - Torck" />
@@ -170,7 +174,7 @@ if ( have_posts() ) {
           <br />
           km 01 Galpão 06 Módulo 1-A
           <br />
-          CEP: 83.316-001
+          CEP: 88.316-001
           <br />
           Bairro Itaipava
           <br />
