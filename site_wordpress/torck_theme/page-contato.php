@@ -128,7 +128,7 @@ if ( have_posts() ) {
             <?php
             $strMapa = urlencode($enderecoMapa);
             ?>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7359.901877314657!2d-47.30751796901989!3d-22.730064852201256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89a101413a78d%3A0x5119880e02a4c59a!2s<?php echo $strMapa; ?>%2C+13473-000!5e0!3m2!1spt-BR!2sbr!4v1544540169633" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?q=<?php echo $strMapa; ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
