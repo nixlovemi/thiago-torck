@@ -149,7 +149,7 @@ get_header();
                     foreach($arrProdutos as $produtoImg){
                       ?>
                       <li>
-                         <a href="#slide<?php echo $i; ?>">
+                         <a data-fancybox href="<?php echo $produtoImg["urlImagem"]; ?>">
                            <img data-codigo-produto="<?php echo $produtoImg["codigo"]; ?>" src="<?php echo $produtoImg["urlImagem"]; ?>" alt="" />
                          </a>
                       </li>
