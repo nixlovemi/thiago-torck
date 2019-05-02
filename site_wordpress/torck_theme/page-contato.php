@@ -2,22 +2,17 @@
 /* Template Name: Torck - Contato */
 get_header();
 $templateDIR = get_bloginfo('template_directory');
-
 // simple fields
 $bannerPagina = simple_fields_value("banner_da_pagina_url");
 $bannerPagina = ($bannerPagina != "") ? $bannerPagina: "$templateDIR/images/banner-contato.jpg";
-
 $emailContato = simple_fields_value("informacoes_contato_email");
 $emailContato = ($emailContato != "") ? $emailContato: "leandro.parra.85@gmail.com";
-
 $enderecoMapa = simple_fields_value("informacoes_contato_endereco_mapa");
-
 // form contato
 $vNome     = "";
 $vTelefone = "";
 $vEmail    = "";
 $vMensagem = "";
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $hddnAcao = $_POST["hddnAcao"];
   if($hddnAcao == "postContato"){
@@ -25,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vTelefone = $_POST["telefone"];
     $vEmail    = $_POST["email"];
     $vMensagem = $_POST["mensagem"];
-
     $msgErro = "";
     if(strlen($vNome) < 3){
       $msgErro .= "* Informe o nome<br />";
@@ -39,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(strlen($vMensagem) < 3){
       $msgErro .= "* Informe a mensagem<br />";
     }
-
     if($msgErro != ""){
       $msgErro = "Verifique os campos antes de enviar o contato:<br /><br />$msgErro";
       ?>
@@ -55,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $html .= "--Telefone: $vTelefone<br />";
       $html .= "--Email: $vEmail<br />";
       $html .= "--Mensagem:<br /><i>".nl2br($vMensagem)."</i>";
-
       $ret = sendMail($emailContato, "CONTATO SITE - TORCK", $html);
       $msg = ($ret === true) ? "Contato enviado com sucesso": "Erro ao enviar contato. Tente novamente mais tarde.";
       ?>
@@ -65,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       });
       </script>
       <?php
-
       $vNome     = "";
       $vTelefone = "";
       $vEmail    = "";
@@ -128,7 +119,7 @@ if ( have_posts() ) {
             <?php
             $strMapa = urlencode($enderecoMapa);
             ?>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7359.901877314657!2d-47.30751796901989!3d-22.730064852201256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89a101413a78d%3A0x5119880e02a4c59a!2s<?php echo $strMapa; ?>%2C+13473-000!5e0!3m2!1spt-BR!2sbr!4v1544540169633" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=<?php echo $strMapa; ?>&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -185,6 +176,5 @@ if ( have_posts() ) {
     <?php
   }
 }
-
 get_footer();
 ?>
